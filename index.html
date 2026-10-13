@@ -4,76 +4,33 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Asmaa GKS Dream</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700&display=swap" rel="stylesheet">
 <style>
-body{font-family:sans-serif;background:#fff0f5;text-align:center;margin:0}
-header{background:white;padding:20px;box-shadow:0 2px 10px #ddd}
-h1{color:#d81b60}
-.card{background:white;margin:15px;padding:20px;border-radius:20px;box-shadow:0 4px 10px #ddd}
-button{padding:10px 15px;margin:5px;border:none;border-radius:10px;background:#d81b60;color:white;font-size:16px}
-input{padding:10px;border-radius:10px;border:1px solid #ddd;width:80%}
-.game{display:grid;grid-template-columns:repeat(3,70px);gap:5px;justify-content:center;margin:auto}
-.cell{width:70px;height:70px;background:#fce4ec;font-size:30px;display:flex;align-items:center;justify-content:center;border-radius:10px;cursor:pointer}
+body{font-family:Cairo,sans-serif;background:linear-gradient(135deg,#fce4ec,#e3f2fd);margin:0;padding:12px;text-align:center}
+.card{background:#fff;max-width:480px;margin:14px auto;padding:18px;border-radius:20px;box-shadow:0 8px 20px rgba(0,0,0,.1)}
+h1{color:#ad1457}
+.b{padding:8px 14px;margin:3px;border:0;border-radius:20px;background:#f8bbd0;font-weight:bold}
+.b.on{background:#ad1457;color:#fff}
+.btn{background:#ad1457;color:#fff;padding:12px 22px;border:0;border-radius:25px;cursor:pointer}
+.calc{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-top:10px}
+.calc button{padding:14px;border:0;border-radius:10px;background:#fce4ec;font-size:18px}
+#disp{grid-column:span 4;background:#222;color:#fff;padding:14px;border-radius:10px;text-align:left;font-size:20px}
+.board{display:grid;grid-template-columns:repeat(3,75px);gap:6px;justify-content:center;margin:12px auto}
+.board div{width:75px;height:75px;background:#e1bee7;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:28px}
 </style>
 </head>
 <body>
-<header>
-<h1>🇰🇷 Asmaa GKS Dream 🇰🇷</h1>
-<p>أسماء - حلم الدراسة في كوريا</p>
-</header>
-
 <div class="card">
-<h2>لماذا منحة كوريا GKS؟</h2>
-<p>منحة ممولة بالكامل من الحكومة الكورية تشمل طيران وسكن ومصروف شهري. هذا الموقع دليل على مهارتي في البرمجة.</p>
-<p><b>الموقع الرسمي: studyinkorea.go.kr</b></p>
+<div><button id="ar" class="b on" onclick="L('ar')">عربي</button><button id="en" class="b" onclick="L('en')">English</button><button id="ko" class="b" onclick="L('ko')">한국어</button></div>
+<h1 id="t1">أهلاً! أنا أسماء ✨</h1><p id="t2"><b>حلمي منحة GKS كوريا 2026 🇰🇷</b></p><p id="t3">بنت من إسكندرية بحلم أدرس تكنولوجيا في كوريا. صنعت الموقع ده بنفسي 100%!</p><button class="btn" onclick="alert(M)">💌 رسالة للجنة</button>
 </div>
-
-<div class="card">
-<h2>🧮 الآلة الحاسبة</h2>
-<input id="calc" placeholder="مثلا 5+5">
-<br><br>
-<button onclick="try{document.getElementById('calc').value=eval(document.getElementById('calc').value)}catch(e){alert('اكتبي عملية صح')}">= احسبي</button>
-<button onclick="document.getElementById('calc').value=''">مسح</button>
-</div>
-
-<div class="card">
-<h2>❌ لعبة XO ⭕</h2>
-<div class="game" id="board"></div>
-<p id="status">دور: X</p>
-<button onclick="resetGame()">إعادة اللعبة</button>
-</div>
-
+<div class="card"><h2 id="c1">🧮 الآلة الحاسبة</h2><div class="calc"><div id="disp">0</div><button onclick="P('7')">7</button><button onclick="P('8')">8</button><button onclick="P('9')">9</button><button onclick="P('/')">÷</button><button onclick="P('4')">4</button><button onclick="P('5')">5</button><button onclick="P('6')">6</button><button onclick="P('*')">×</button><button onclick="P('1')">1</button><button onclick="P('2')">2</button><button onclick="P('3')">3</button><button onclick="P('-')">-</button><button onclick="P('0')">0</button><button onclick="P('.')">.</button><button onclick="E()">=</button><button onclick="P('+')">+</button><button onclick="C()" style="grid-column:span 4;background:#ad1457;color:#fff">مسح</button></div></div>
+<div class="card"><h2 id="g1">❌⭕ لعبة XO</h2><p id="gs">دور X</p><div class="board" id="bd"></div><button class="btn" onclick="R()" id="gr">إعادة</button></div>
 <script>
-let board = document.getElementById('board');
-let statusText = document.getElementById('status');
-let cells = [];
-let turn = 'X';
-
-function resetGame(){
- board.innerHTML=''; cells=[]; turn='X'; statusText.innerText='دور: X';
- for(let i=0;i<9;i++){
-  let div=document.createElement('div');
-  div.className='cell';
-  div.onclick=()=>play(i);
-  board.appendChild(div);
-  cells.push(div);
- }
-}
-function play(i){
- if(cells[i].innerText!='') return;
- cells[i].innerText=turn;
- checkWin();
- turn = turn=='X'?'O':'X';
- if(statusText.innerText.includes('دور')) statusText.innerText='دور: '+turn;
-}
-function checkWin(){
- let wins=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
- for(let w of wins){
-  if(cells[w[0]].innerText && cells[w[0]].innerText==cells[w[1]].innerText && cells[w[0]].innerText==cells[w[2]].innerText){
-   statusText.innerText='الفائز هو: '+cells[w[0]].innerText+' 🎉';
-  }
- }
-}
-resetGame();
+let T={ar:{t1:"أهلاً! أنا أسماء ✨",t2:"حلمي منحة GKS كوريا 2026 🇰🇷",t3:"بنت من إسكندرية بحلم أدرس تكنولوجيا في كوريا. صنعت الموقع ده بنفسي 100%!",c1:"🧮 الآلة الحاسبة",g1:"❌⭕ لعبة XO",gr:"إعادة",gs:"دور "},en:{t1:"Hi! I'm Asmaa ✨",t2:"My dream: GKS Korea 2026 🇰🇷",t3:"Girl from Alexandria dreaming to study tech in Korea. I built this 100% myself!",c1:"🧮 Calculator",g1:"❌⭕ TicTacToe",gr:"Reset",gs:"Turn: "},ko:{t1:"안녕하세요! 아스마예요 ✨",t2:"제 꿈: 2026 GKS 한국 🇰🇷",t3:"알렉산드리아에서 온 소녀, 한국에서 공부하는 꿈! 100% 직접 만들었어요!",c1:"🧮 계산기",g1:"❌⭕ 틱택토",gr:"다시 시작",gs:"차례: "}};let Mm={ar:"شكراً لزيارتكم! أنا أسماء من مصر، أحلم بـ GKS وصنعت الموقع ده بنفسي! 💜",en:"Thanks! I'm Asmaa from Egypt, dreaming of GKS and built this myself! 💜",ko:"감사합니다! 이집트 아스마예요, GKS 꿈꾸며 직접 만들었어요! 💜"};let lang="ar";let M=Mm.ar;
+function L(l){lang=l;document.querySelectorAll('.b').forEach(b=>b.classList.remove('on'));document.getElementById(l).classList.add('on');document.getElementById('t1').innerText=T[l].t1;document.getElementById('t2').innerText=T[l].t2;document.getElementById('t3').innerText=T[l].t3;document.getElementById('c1').innerText=T[l].c1;document.getElementById('g1').innerText=T[l].g1;document.getElementById('gr').innerText=T[l].gr;M=Mm[l];if(l=='ar')document.documentElement.dir='rtl';else document.documentElement.dir='ltr';R()}
+let d="";function P(v){if(d=="0")d="";d+=v;disp.innerText=d}function C(){d="";disp.innerText="0"}function E(){try{d=eval(d).toString();disp.innerText=d}catch{d="";disp.innerText="Error"}}
+let bd=document.getElementById('bd');let turn="X";let cells=Array(9).fill("");function D(){bd.innerHTML="";cells.forEach((c,i)=>{let e=document.createElement('div');e.innerText=c;e.onclick=()=>{if(cells[i]!="")return;cells[i]=turn;turn=turn=="X"?"O":"X";D();W()};bd.appendChild(e)});gs.innerText=T[lang].gs+turn}function W(){let w=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];for(let a of w){if(cells[a[0]]&&cells[a[0]]==cells[a[1]]&&cells[a[0]]==cells[a[2]]){gs.innerText="Winner: "+cells[a[0]]+" 🎉";return}}}function R(){cells=Array(9).fill("");turn="X";D()}D();
 </script>
 </body>
-  </html>
+ </html>
