@@ -1,1 +1,53 @@
-<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Asmaa GKS Dream</title><link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700&display=swap" rel="stylesheet"><style>body{font-family:Cairo,sans-serif;background:linear-gradient(135deg,#fce4ec,#e3f2fd);margin:0;padding:12px;text-align:center}.card{background:#fff;max-width:480px;margin:14px auto;padding:18px;border-radius:20px;box-shadow:0 8px 20px rgba(0,0,0,.1)}h1{color:#ad1457}.b{padding:8px 14px;margin:3px;border:0;border-radius:20px;background:#f8bbd0;font-weight:bold}.b.on{background:#ad1457;color:#fff}.btn{background:#ad1457;color:#fff;padding:12px 22px;border:0;border-radius:25px;cursor:pointer}.calc{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-top:10px}.calc button{padding:14px;border:0;border-radius:10px;background:#fce4ec;font-size:18px}#disp{grid-column:span 4;background:#222;color:#fff;padding:14px;border-radius:10px;text-align:left;font-size:20px}.board{display:grid;grid-template-columns:repeat(3,75px);gap:6px;justify-content:center;margin:12px auto}.board div{width:75px;height:75px;background:#e1bee7;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:28px}</style></head><body><div class="card"><div><button id="ar" class="b on" onclick="L('ar')">عربي</button><button id="en" class="b" onclick="L('en')">English</button><button id="ko" class="b" onclick="L('ko')">한국어</button></div><h1 id="t1">أهلاً! أنا أسماء ✨</h1><p id="t2"><b>حلمي منحة GKS كوريا 2026 🇰🇷</b></p><p id="t3">بنت من البحيرة بحلم أدرس تكنولوجيا في كوريا. صنعت الموقع ده بنفسي 100%!</p><button class="btn" onclick="alert(M)">💌 رسالة للجنة</button></div><div class="card"><h2 id="c1">🧮 الآلة الحاسبة</h2><div class="calc"><div id="disp">0</div><button onclick="P('7')">7</button><button onclick="P('8')">8</button><button onclick="P('9')">9</button><button onclick="P('/')">÷</button><button onclick="P('4')">4</button><button onclick="P('5')">5</button><button onclick="P('6')">6</button><button onclick="P('*')">×</button><button onclick="P('1')">1</button><button onclick="P('2')">2</button><button onclick="P('3')">3</button><button onclick="P('-')">-</button><button onclick="P('0')">0</button><button onclick="P('.')">
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Asmaa - GKS Dream from Egypt</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Cairo',sans-serif;background:#fff0f5;min-height:100vh;overflow-x:hidden}
+.bg{position:fixed;top:0;left:0;width:100%;height:100%;background:linear-gradient(180deg,#ffe4ec 0%,#e0f2ff 50%,#fff5e6 100%);z-index:-1}
+.heart{position:fixed;animation:fall linear infinite;z-index:0}
+@keyframes fall{0%{transform:translateY(-10vh) rotate(0deg);opacity:1}100%{transform:translateY(110vh) rotate(360deg);opacity:0}}
+.card{max-width:420px;margin:40px auto;background:rgba(255,255,255,0.85);backdrop-filter:blur(12px);border-radius:30px;padding:30px 22px;text-align:center;box-shadow:0 15px 35px rgba(173,20,87,0.15);border:1px solid #fff;position:relative;z-index:1}
+.b{padding:7px 15px;margin:3px;border:1px solid #f8bbd0;border-radius:20px;background:#fff;font-weight:bold;cursor:pointer}
+.b.on{background:#ad1457;color:#fff;border-color:#ad1457}
+.avatar{width:90px;height:90px;background:linear-gradient(135deg,#ad1457,#ff80ab);border-radius:50%;margin:0 auto 15px;display:flex;align-items:center;justify-content:center;font-size:40px;color:#fff}
+h1{color:#ad1457;font-size:26px;margin-bottom:6px}
+h2{color:#555;font-size:14px;letter-spacing:1px;margin-bottom:18px}
+.dream{font-size:18px;color:#333;line-height:1.8;background:#fff;border-radius:18px;padding:18px;margin:18px 0}
+.tag{display:inline-block;background:#fce4ec;color:#ad1457;padding:5px 12px;border-radius:15px;font-size:12px;margin:4px}
+.btn{width:100%;background:linear-gradient(90deg,#ad1457,#ff4081);color:#fff;border:0;padding:14px;border-radius:25px;font-size:16px;font-weight:bold;margin-top:15px;cursor:pointer}
+</style>
+</head>
+<body>
+<div class="bg"></div>
+<div class="card">
+<div><button id="ar" class="b on" onclick="L('ar')">عربي</button><button id="en" class="b" onclick="L('en')">English</button><button id="ko" class="b" onclick="L('ko')">한국어</button></div>
+<div class="avatar">A</div>
+<h1 id="t1">أنا أسماء من مصر ✨</h1>
+<h2 id="t2">ASMAA ALI • EGYPT</h2>
+<div class="dream" id="t3">حلمي مش مجرد منحة...<br>حلمي أكون بنت من <b>مصر</b> تدرس تكنولوجيا في كوريا الجنوبية.<br><br>أنا صنعت هذا الموقع بنفسي، 100% بيدي، عشان أثبت إني أستحق فرصة <b>GKS 2026</b> 🇰🇷<br><br>من قلب مصر... إلى قلب سيول.</div>
+<div><span class="tag">💜 From Egypt</span><span class="tag">🇰🇷 GKS 2026</span><span class="tag">💻 Self-Taught</span></div>
+<button class="btn" onclick="alert(M)" id="btn">💌 رسالتي للجنة المنحة</button>
+<div style="font-size:11px;color:#999;margin-top:20px">Made with love by Asmaa from Egypt • 2026</div>
+</div>
+<script>
+let T={
+ar:{t1:"أنا أسماء من مصر ✨",t2:"ASMAA ALI • مصر",t3:"حلمي مش مجرد منحة...<br>حلمي أكون بنت من <b>مصر</b> تدرس تكنولوجيا في كوريا الجنوبية.<br><br>أنا صنعت هذا الموقع بنفسي، 100% بيدي، عشان أثبت إني أستحق فرصة <b>GKS 2026</b> 🇰🇷<br><br>من قلب مصر... إلى قلب سيول.",btn:"💌 رسالتي للجنة المنحة"},
+en:{t1:"I'm Asmaa from Egypt ✨",t2:"ASMAA ALI • EGYPT",t3:"My dream is not just a scholarship...<br>My dream is to be a girl from <b>Egypt</b> to study Technology in South Korea.<br><br>I built this website 100% by myself to prove I deserve the <b>GKS 2026</b> chance 🇰🇷<br><br>From the heart of Egypt... to the heart of Seoul.",btn:"💌 My Letter to GKS Committee"},
+ko:{t1:"이집트 출신 아스마예요 ✨",t2:"ASMAA ALI • 이집트",t3:"제 꿈은 단순한 장학금이 아니에요...<br><b>이집트</b> 출신으로 한국에서 기술을 공부하는 것이 꿈이에요.<br><br><b>GKS 2026</b> 기회를 받을 자격이 있음을 증명하기 위해 이 웹사이트를 100% 직접 만들었어요 🇰🇷<br><br>이집트의 심장에서... 서울의 심장으로.",btn:"💌 GKS 위원회에 보내는 편지"}
+};
+let Mm={
+ar:"أنا أسماء، بنت بسيطة من مصر. اتعلمت البرمجة لوحدي وصنعت الموقع ده بيدي عشان حلمي GKS. ادوني فرصة أحقق حلمي وأرفع اسم بلدي مصر. 💜",
+en:"I am Asmaa, a simple girl from Egypt. I learned coding alone and built this site myself for my GKS dream. Give me a chance to make my dream and make Egypt proud. 💜",
+ko:"저는 이집트 출신의 평범한 소녀 아스마예요. 독학하며 이 사이트를 직접 만들었어요. 제 꿈을 이룰 수 있도록 기회를 주세요. 💜"
+};
+let M=Mm.ar;
+function L(l){document.querySelectorAll('.b').forEach(b=>b.classList.remove('on'));document.getElementById(l).classList.add('on');document.getElementById('t1').innerHTML=T[l].t1;document.getElementById('t2').innerHTML=T[l].t2;document.getElementById('t3').innerHTML=T[l].t3;document.getElementById('btn').innerHTML=T[l].btn;M=Mm[l];document.documentElement.dir=(l=='ar'?'rtl':'ltr')}
+function createHeart(){let h=document.createElement('div');h.className='heart';h.innerHTML=['💜','🇰🇷','✨','🌸','💌'][Math.floor(Math.random()*5)];h.style.left=Math.random()*100+'vw';h.style.fontSize=(15+Math.random()*15)+'px';h.style.animationDuration=(4+Math.random()*6)+'s';document.body.appendChild(h);setTimeout(()=>h.remove(),8000)}setInterval(createHeart,400);
+</script>
+</body>
+</html>
