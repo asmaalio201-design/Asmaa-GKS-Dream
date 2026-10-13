@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Asmaa GKS Dream</title>
+<style>
+body{font-family:sans-serif;background:#fff0f5;text-align:center;margin:0}
+header{background:white;padding:20px;box-shadow:0 2px 10px #ddd}
+h1{color:#d81b60}
+.card{background:white;margin:15px;padding:20px;border-radius:20px;box-shadow:0 4px 10px #ddd}
+button{padding:10px 15px;margin:5px;border:none;border-radius:10px;background:#d81b60;color:white;font-size:16px}
+input{padding:10px;border-radius:10px;border:1px solid #ddd;width:80%}
+.game{display:grid;grid-template-columns:repeat(3,70px);gap:5px;justify-content:center;margin:auto}
+.cell{width:70px;height:70px;background:#fce4ec;font-size:30px;display:flex;align-items:center;justify-content:center;border-radius:10px;cursor:pointer}
+</style>
+</head>
+<body>
+<header>
+<h1>🇰🇷 Asmaa GKS Dream 🇰🇷</h1>
+<p>أسماء - حلم الدراسة في كوريا</p>
+</header>
+
+<div class="card">
+<h2>لماذا منحة كوريا GKS؟</h2>
+<p>منحة ممولة بالكامل من الحكومة الكورية تشمل طيران وسكن ومصروف شهري. هذا الموقع دليل على مهارتي في البرمجة.</p>
+<p><b>الموقع الرسمي: studyinkorea.go.kr</b></p>
+</div>
+
+<div class="card">
+<h2>🧮 الآلة الحاسبة</h2>
+<input id="calc" placeholder="مثلا 5+5">
+<br><br>
+<button onclick="try{document.getElementById('calc').value=eval(document.getElementById('calc').value)}catch(e){alert('اكتبي عملية صح')}">= احسبي</button>
+<button onclick="document.getElementById('calc').value=''">مسح</button>
+</div>
+
+<div class="card">
+<h2>❌ لعبة XO ⭕</h2>
+<div class="game" id="board"></div>
+<p id="status">دور: X</p>
+<button onclick="resetGame()">إعادة اللعبة</button>
+</div>
+
+<script>
+let board = document.getElementById('board');
+let statusText = document.getElementById('status');
+let cells = [];
+let turn = 'X';
+
+function resetGame(){
+ board.innerHTML=''; cells=[]; turn='X'; statusText.innerText='دور: X';
+ for(let i=0;i<9;i++){
+  let div=document.createElement('div');
+  div.className='cell';
+  div.onclick=()=>play(i);
+  board.appendChild(div);
+  cells.push(div);
+ }
+}
+function play(i){
+ if(cells[i].innerText!='') return;
+ cells[i].innerText=turn;
+ checkWin();
+ turn = turn=='X'?'O':'X';
+ if(statusText.innerText.includes('دور')) statusText.innerText='دور: '+turn;
+}
+function checkWin(){
+ let wins=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+ for(let w of wins){
+  if(cells[w[0]].innerText && cells[w[0]].innerText==cells[w[1]].innerText && cells[w[0]].innerText==cells[w[2]].innerText){
+   statusText.innerText='الفائز هو: '+cells[w[0]].innerText+' 🎉';
+  }
+ }
+}
+resetGame();
+</script>
+</body>
+  </html>
